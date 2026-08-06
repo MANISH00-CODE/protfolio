@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manish Barman - Web Developer</title>
+    <!-- FontAwesome link for social/extra icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
+        body { background-color: #0b1120; color: #ffffff; overflow-x: hidden; }
+
+        /* HEADER & NAVIGATION */
+        header { position: fixed; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 20px 8%; background-color: rgba(11, 17, 32, 0.95); backdrop-filter: blur(10px); z-index: 1000; }
+        .logo { font-size: 1.5rem; font-weight: 600; letter-spacing: 1px; }
+        .nav-links { display: flex; list-style: none; gap: 30px; }
+        .nav-links a { text-decoration: none; color: #94a3b8; font-size: 0.95rem; transition: 0.3s; }
+        .nav-links a:hover, .nav-links a.active { color: #ffffff; }
+        .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: #ffffff; z-index: 1001; }
+
+        /* HERO SECTION */
+        /* .hero { display: flex; justify-content: space-between; align-items: center; min-height: auto; padding: 60px 8% 40px 8%;} */
+        .hero {
+    display: flex;
+    justify-content: center; /* Content ko center mein layega */
+    align-items: center;
+    gap: 80px; /* Text aur photo ke beech ka distance control karega */
+    padding: 60px 5% 40px 5%;
+    min-height: auto;
+}
+        .hero-content h1 { font-size: 4.5rem; font-weight: 700; line-height: 1.1; }
+        .hero-content h1 span { color: #ffffff; }
+        .hero-content h3 { font-size: 1.8rem; font-weight: 400; color: #94a3b8; margin-top: 15px; margin-bottom: 30px; }
+        .recent-works-btn { display: inline-flex; align-items: center; gap: 10px; background-color: #3b82f6; color: #ffffff; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-size: 1rem; font-weight: 500; transition: 0.3s; }
+        .recent-works-btn:hover { background-color: #2563eb; }
+        /* .hero-image { flex: 1; display: flex; justify-content: center;} */
+        .hero img {
+    max-height: 550px; /* Photo ki max height set kar di taaki wo screen se bahar na jaye */
+    width: auto;
+}
+        .hero-image img { object-fit: contain; border-radius: 12px; background-color: transparent; transition: all 0.3s ease; }
+
+        /* GENERAL SECTION STYLES */
+        section { padding: 100px 8% 50px 8%; }
+        h2.section-title { font-size: 2.2rem; text-align: center; margin-bottom: 60px; letter-spacing: 2px; text-transform: uppercase; }
+
+        /* WORKS & PROJECTS GRID */
+        .works-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
+        .work-card { background-color: #111827; padding: 25px; border-radius: 12px; display: flex; flex-direction: column; gap: 20px; transition: transform 0.3s ease; }
+        .work-card:hover { transform: translateY(-5px); }
+        .work-info h3 { font-size: 1.3rem; display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .work-info p { color: #94a3b8; font-size: 0.9rem; line-height: 1.5; }
+        .work-img img { width: 100%; height: 220px; object-fit: cover; border-radius: 8px; background-color: #1e293b; }
+
+        /* MY INFO SECTION */
+        .info-container { display: flex; align-items: center; gap: 80px; margin-bottom: 80px; }
+        .about-me h3 { font-size: 1.8rem; margin-bottom: 20px; }
+        .about-me p { color: #94a3b8; line-height: 1.7; margin-bottom: 30px; font-size: 1rem; }
+        .download-btn { display: inline-block; background-color: #3b82f6; color: #ffffff; padding: 12px 28px; border-radius: 6px; text-decoration: none; font-weight: 500; transition: 0.3s; }
+        .download-btn:hover { background-color: #2563eb; }
+
+        /* EXPERIENCE & SKILLS */
+        .experience-section, .skills-section { margin-top: 50px; }
+        .experience-section h3, .skills-section h3 { font-size: 1.5rem; margin-bottom: 30px; color: #94a3b8; }
+        .experience-grid { display: flex; flex-direction: column; gap: 25px; }
+        .exp-item { display: grid; grid-template-columns: 1fr 2fr; gap: 20px; border-bottom: 1px solid #1f2937; padding-bottom: 20px; }
+        
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 20px; }
+        .skills__box { display: flex; flex-direction: column; align-items: center; gap: 15px; font-size: 0.95rem; font-weight: 500; color: #ffffff; background: #111827; padding: 20px; border-radius: 8px; }
+        .skills__img { width: 50px; height: 50px; object-fit: contain; }
+
+        /* SERVICES SECTION */
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .service-card { background-color: #111827; padding: 35px 25px; border-radius: 12px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+        .service-card img { width: 60px; height: 60px; object-fit: contain; margin-bottom: 20px; }
+        .service-card h3 { margin-bottom: 10px; }
+        .service-card p { color: #94a3b8; font-size: 0.9rem; line-height: 1.6; }
+        
+        /* CONTACT SECTION */
+        .contact-container { max-width: 700px; margin: 0 auto; }
+        .contact form { display: flex; flex-direction: column; gap: 20px; }
+        .form-group-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .contact input, .contact textarea { width: 100%; background-color: #111827; border: none; padding: 18px; border-radius: 8px; color: #ffffff; font-size: 0.95rem; outline: none; }
+        .send-btn { background-color: #3b82f6; color: #ffffff; border: none; padding: 18px; border-radius: 8px; font-weight: 500; cursor: pointer; width: 200px; margin: 0 auto; }
+
+        /* FOOTER */
+        footer { display: flex; justify-content: space-between; align-items: center; padding: 40px 8%; background-color: #0b1120; margin-top: 50px; }
+        .footer-text { color: #64748b; font-size: 0.9rem; cursor: pointer; user-select: none; }
+        .footer-nav { display: flex; gap: 30px; }
+        .footer-nav a { color: #ffffff; text-decoration: none; font-size: 0.9rem; }
+
+        /* HIDDEN EDIT PANEL STYLES */
+        #edit-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(11, 17, 32, 0.98); z-index: 9999; overflow-y: auto; padding: 40px; }
+        .edit-container { max-width: 900px; margin: 0 auto; background: #1e293b; padding: 30px; border-radius: 12px; position: relative; color: #fff; }
+        .close-btn { position: absolute; top: 20px; right: 20px; font-size: 2rem; color: #ef4444; cursor: pointer; }
+        .edit-container h2 { color: #3b82f6; margin-bottom: 20px; font-size: 1.8rem; border-bottom: 1px solid #334155; padding-bottom: 10px; }
+        .edit-section { margin-bottom: 30px; background: #0f172a; padding: 20px; border-radius: 8px; }
+        .edit-section h3 { margin-bottom: 15px; color: #38bdf8; }
+        .edit-section label { display: block; margin-bottom: 5px; color: #94a3b8; font-size: 0.9rem; }
+        .edit-section input[type="text"], .edit-section input[type="url"], .edit-section input[type="number"], .edit-section textarea { width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #334155; background: #0b1120; color: #fff; margin-bottom: 15px; }
+        .checkbox-row { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; }
+        .admin-item-card { background: #1e293b; padding: 15px; border-radius: 8px; margin-bottom: 15px; position: relative; border: 1px solid #334155; }
+        .remove-btn { position: absolute; top: 10px; right: 10px; background: #ef4444; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; }
+        .add-btn { background: #3b82f6; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; margin-bottom: 15px; }
+        .save-edit-btn { background: #10b981; color: #fff; padding: 15px; border: none; border-radius: 8px; cursor: pointer; width: 100%; font-size: 1.2rem; font-weight: bold; position: sticky; bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            /* Hero Section & Name Div Fixes */
+            .hero { 
+                flex-direction: column; 
+                text-align: center; 
+                padding-top: 130px; /* Name div ko header ke piche se bahar nikalne ke liye */
+                padding-bottom: 40px;
+                min-height: auto; /* Photo ko extra niche jaane se rokne ke liye */
+                gap: 30px; /* Name aur photo ke beech ka gap */
+            }
+            
+            /* Mobile ke liye thoda chota font */
+            .hero-content h1 {
+                font-size: 3rem; 
+            }
+            
+            .info-container { 
+                flex-direction: column; 
+                text-align: center; 
+            }
+            
+            /* Navigation Menu Fixes */
+            .nav-links { 
+                display: none; 
+                flex-direction: column; 
+                position: absolute; 
+                top: 70px; 
+                left: 0; 
+                width: 100%; 
+                background: rgba(11, 17, 32, 0.98); /* Thoda aur dark taki text clear dikhe */
+                padding: 20px 0; 
+                box-shadow: 0 10px 15px rgba(0,0,0,0.5);
+            }
+            .nav-links.active { display: flex; }
+            .menu-toggle { display: block; }
+            
+            /* Baki Layout Fixes */
+            #edit-modal { padding: 10px; }
+            .footer-nav { flex-direction: column; gap: 15px; text-align: center; margin-top: 20px; }
+            footer { flex-direction: column; text-align: center; }
+            .form-group-row { grid-template-columns: 1fr; gap: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Manish</div>
+        <nav class="navbar"><ul class="nav-links" id="dynamic-nav"></ul></nav>
+        <div class="menu-toggle"><i class="fa-solid fa-bars"></i></div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Manish <br><span>Barman</span></h1>
+            <h3 id="display-role">Web Developer</h3>
+            <a href="#work" class="recent-works-btn"><i class="fa-solid fa-arrow-down"></i> Recent Works</a>
+        </div>
+        <div class="hero-image"><img id="display-hero-img" src="" alt="Manish Barman"></div>
+    </section>
+
+    <section id="projects" class="recent-works">
+        <h2 class="section-title">MAIN PROJECTS</h2>
+        <div class="works-grid" id="projects-grid"></div>
+    </section>
+
+    <section id="work" class="recent-works">
+        <h2 class="section-title">RECENT WORKS</h2>
+        <div class="works-grid" id="works-grid"></div>
+    </section>
+
+    <section id="my-info" class="my-info">
+        <h2 class="section-title">MY INFO</h2>
+        <div class="info-container">
+            <div class="info-left"><div class="hero-image"><img id="display-about-img" src="" alt="Manish Barman"></div></div>
+            <div class="info-right about-me">
+                <h3>About Me</h3>
+                <p id="display-about-desc"></p>
+                <a href="#" class="download-btn">Download CV</a>
+            </div>
+        </div>
+        <div class="experience-section">
+            <h3>Experience</h3>
+            <div class="experience-grid" id="exp-grid"></div>
+        </div>
+        <div class="skills-section">
+            <h3>Skills</h3>
+            <div class="skills-grid" id="skills-grid"></div>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <h2 class="section-title">SERVICES</h2>
+        <div class="services-grid" id="services-grid"></div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2 class="section-title">CONTACT ME</h2>
+        <div class="contact-container">
+            <form id="contactForm">
+                <div class="form-group-row"><input type="text" placeholder="Name" required><input type="email" placeholder="Email" required></div>
+                <textarea rows="6" placeholder="Message" required></textarea>
+                <button type="submit" class="send-btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p class="footer-text" id="secret-footer">&copy; All Rights Reserved By Manish Barman</p>
+        <div class="footer-nav">
+            <a href="#home">Home</a><a href="#work">Work</a><a href="#my-info">Info</a>
+        </div>
+    </footer>
+
+    <!-- SECRET EDIT PANEL (Opens with 5 clicks on Footer Text) -->
+    <div id="edit-modal">
+        <div class="edit-container">
+            <i class="fa-solid fa-xmark close-btn" id="close-edit"></i>
+            <h2>Secret Admin Panel</h2>
+            <p style="color: #64748b; font-size: 0.9rem; margin-bottom: 20px;">Paste your GitHub image URLs in the fields below. Adjust X/Y (Negative for left/up, Positive for right/down).</p>
+            
+            <div class="edit-section">
+                <h3>1. Visibility (Hide/Show Sections)</h3>
+                <div class="checkbox-row"><input type="checkbox" id="show-projects"> Show Main Projects</div>
+                <div class="checkbox-row"><input type="checkbox" id="show-works"> Show Recent Works</div>
+                <div class="checkbox-row"><input type="checkbox" id="show-info"> Show My Info</div>
+                <div class="checkbox-row"><input type="checkbox" id="show-services"> Show Services</div>
+                <div class="checkbox-row"><input type="checkbox" id="show-contact"> Show Contact</div>
+            </div>
+
+            <div class="edit-section">
+                <h3>2. Basic Info (Hero Section)</h3>
+                <label>Role</label><input type="text" id="edit-role">
+                <label>Hero Photo URL</label><input type="url" id="edit-hero-img" placeholder="https://raw.githubusercontent.com/...">
+                <div class="form-group-row">
+                    <div><label>Image Width (px)</label><input type="number" id="edit-hero-w"></div>
+                    <div><label>Image Height (px)</label><input type="number" id="edit-hero-h"></div>
+                </div>
+                <div class="form-group-row">
+                    <div><label>Left / Right (X-axis)</label><input type="number" id="edit-hero-x"></div>
+                    <div><label>Up / Down (Y-axis)</label><input type="number" id="edit-hero-y"></div>
+                </div>
+            </div>
+
+            <div class="edit-section">
+                <h3>3. My Info Section (About Me)</h3>
+                <label>About Description</label><textarea id="edit-about-desc" rows="3"></textarea>
+                <label>About Photo URL</label><input type="url" id="edit-about-img" placeholder="https://raw.githubusercontent.com/...">
+                <div class="form-group-row">
+                    <div><label>Image Width (px)</label><input type="number" id="edit-about-w"></div>
+                    <div><label>Image Height (px)</label><input type="number" id="edit-about-h"></div>
+                </div>
+                <div class="form-group-row">
+                    <div><label>Left / Right (X-axis)</label><input type="number" id="edit-about-x"></div>
+                    <div><label>Up / Down (Y-axis)</label><input type="number" id="edit-about-y"></div>
+                </div>
+            </div>
+
+            <div class="edit-section">
+                <h3>4. Main Projects</h3>
+                <div id="admin-projects"></div>
+                <button class="add-btn" onclick="addItem('projects')">+ Add Project</button>
+            </div>
+
+            <div class="edit-section">
+                <h3>5. Recent Works</h3>
+                <div id="admin-works"></div>
+                <button class="add-btn" onclick="addItem('works')">+ Add Recent Work</button>
+            </div>
+
+            <div class="edit-section">
+                <h3>6. Experience</h3>
+                <div id="admin-exp"></div>
+                <button class="add-btn" onclick="addItem('exp')">+ Add Experience</button>
+            </div>
+
+            <div class="edit-section">
+                <h3>7. Skills (Images/Icons)</h3>
+                <div id="admin-skills"></div>
+                <button class="add-btn" onclick="addItem('skills')">+ Add Skill</button>
+            </div>
+
+            <div class="edit-section">
+                <h3>8. Services</h3>
+                <div id="admin-services"></div>
+                <button class="add-btn" onclick="addItem('services')">+ Add Service</button>
+            </div>
+
+            <button class="save-edit-btn" onclick="saveEdits()">SAVE ALL CHANGES</button>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Default Data with sample Image Links and Image Controls
+        let data = JSON.parse(localStorage.getItem('manishFullPortfolioV6')) || {
+            showProjects: true, showWorks: true, showInfo: true, showServices: true, showContact: true,
+            role: "Web Developer",
+            
+            // Hero Image Data
+            heroImg: "", heroImgW: 350, heroImgH: 450, heroImgX: 0, heroImgY: 0,
+            
+            // About Info Data
+            aboutDesc: "I am a beginner in software development, focusing heavily on frontend technologies. I love building custom browser modifications like Tampermonkey userscripts and automating tasks!",
+            aboutImg: "", aboutImgW: 350, aboutImgH: 450, aboutImgX: 0, aboutImgY: 0,
+            
+            projects: [{ title: "MacroDroid Safety App", desc: "Automated location tracking.", img: "" }],
+            works: [{ title: "Text Compare Tool", desc: "JS web tool that identifies matching text lines.", img: "" }, { title: "YouTube Auto Pause", desc: "Userscript to implement custom time-tagging.", img: ""}],
+            exp: [{ company: "Self-Taught", role: "Frontend Dev", date: "2025 - Present", desc: "Building scripts, extensions, and web interfaces." }],
+            skills: [
+                { name: "HTML", img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" }, 
+                { name: "CSS", img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" }, 
+                { name: "JavaScript", img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" }
+            ],
+            services: [
+                { title: "Web Development", desc: "Building responsive sites using modern HTML, CSS, and JS.", img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" }
+            ]
+        };
+
+        // Function to Render the Website from Data
+        function renderSite() {
+            document.getElementById('projects').style.display = data.showProjects ? 'block' : 'none';
+            document.getElementById('work').style.display = data.showWorks ? 'block' : 'none';
+            document.getElementById('my-info').style.display = data.showInfo ? 'block' : 'none';
+            document.getElementById('services').style.display = data.showServices ? 'block' : 'none';
+            document.getElementById('contact').style.display = data.showContact ? 'block' : 'none';
+
+            let nav = '<li><a href="#home">Home</a></li>';
+            if(data.showProjects) nav += '<li><a href="#projects">Projects</a></li>';
+            if(data.showWorks) nav += '<li><a href="#work">Work</a></li>';
+            if(data.showInfo) nav += '<li><a href="#my-info">My Info</a></li>';
+            if(data.showServices) nav += '<li><a href="#services">Services</a></li>';
+            if(data.showContact) nav += '<li><a href="#contact">Contact</a></li>';
+            document.getElementById('dynamic-nav').innerHTML = nav;
+
+            document.getElementById('display-role').innerText = data.role;
+            
+            // Hero Image Styling applied dynamically
+            const heroImgEl = document.getElementById('display-hero-img');
+            heroImgEl.src = data.heroImg;
+            heroImgEl.style.width = data.heroImgW + 'px';
+            heroImgEl.style.height = data.heroImgH + 'px';
+            heroImgEl.style.transform = `translate(${data.heroImgX}px, ${data.heroImgY}px)`;
+
+            // About Image Styling applied dynamically
+            document.getElementById('display-about-desc').innerText = data.aboutDesc;
+            const aboutImgEl = document.getElementById('display-about-img');
+            aboutImgEl.src = data.aboutImg;
+            aboutImgEl.style.width = data.aboutImgW + 'px';
+            aboutImgEl.style.height = data.aboutImgH + 'px';
+            aboutImgEl.style.transform = `translate(${data.aboutImgX}px, ${data.aboutImgY}px)`;
+
+            document.getElementById('projects-grid').innerHTML = data.projects.map(i => `<div class="work-card"><div class="work-info"><h3>${i.title}</h3><p>${i.desc}</p></div><div class="work-img"><img src="${i.img}"></div></div>`).join('');
+            document.getElementById('works-grid').innerHTML = data.works.map(i => `<div class="work-card"><div class="work-info"><h3>${i.title}</h3><p>${i.desc}</p></div><div class="work-img"><img src="${i.img}"></div></div>`).join('');
+            document.getElementById('exp-grid').innerHTML = data.exp.map(i => `<div class="exp-item"><h4>${i.company}</h4><div class="exp-details"><h5>${i.role}</h5><span class="date">${i.date}</span><p>${i.desc}</p></div></div>`).join('');
+            
+            document.getElementById('skills-grid').innerHTML = data.skills.map(i => `
+                <div class="skills__box">
+                    <img src="${i.img}" alt="image" class="skills__img">
+                    <span class="skills__name">${i.name}</span>
+                </div>
+            `).join('');
+            
+            document.getElementById('services-grid').innerHTML = data.services.map(i => `
+                <div class="service-card">
+                    <img src="${i.img}" alt="service icon">
+                    <h3>${i.title}</h3><p>${i.desc}</p>
+                </div>
+            `).join('');
+        }
+
+        // Function to Generate Inputs in Admin Panel
+        function renderAdminLists() {
+            const generateInputs = (type, arr) => {
+                return arr.map((item, index) => {
+                    let fields = '';
+                    if (type === 'projects' || type === 'works') {
+                        fields = `<label>Title</label><input type="text" id="${type}-title-${index}" value="${item.title}">
+                                  <label>Description</label><textarea id="${type}-desc-${index}">${item.desc}</textarea>
+                                  <label>Image URL</label><input type="url" id="${type}-img-${index}" value="${item.img}" placeholder="https://raw.githubusercontent.com/...">`;
+                    } else if (type === 'exp') {
+                        fields = `<label>Company</label><input type="text" id="${type}-company-${index}" value="${item.company}">
+                                  <label>Role</label><input type="text" id="${type}-role-${index}" value="${item.role}">
+                                  <label>Date</label><input type="text" id="${type}-date-${index}" value="${item.date}">
+                                  <label>Description</label><textarea id="${type}-desc-${index}">${item.desc}</textarea>`;
+                    } else if (type === 'skills') {
+                        fields = `<label>Skill Name</label><input type="text" id="${type}-name-${index}" value="${item.name}">
+                                  <label>Skill Image URL (SVG/PNG)</label><input type="url" id="${type}-img-${index}" value="${item.img}" placeholder="https://raw.githubusercontent.com/...">`;
+                    } else if (type === 'services') {
+                        fields = `<label>Service Title</label><input type="text" id="${type}-title-${index}" value="${item.title}">
+                                  <label>Description</label><textarea id="${type}-desc-${index}">${item.desc}</textarea>
+                                  <label>Service Image URL (SVG/PNG)</label><input type="url" id="${type}-img-${index}" value="${item.img}" placeholder="https://raw.githubusercontent.com/...">`;
+                    }
+                    return `<div class="admin-item-card"><button class="remove-btn" onclick="removeItem('${type}', ${index})">X</button>${fields}</div>`;
+                }).join('');
+            };
+
+            document.getElementById('admin-projects').innerHTML = generateInputs('projects', data.projects);
+            document.getElementById('admin-works').innerHTML = generateInputs('works', data.works);
+            document.getElementById('admin-exp').innerHTML = generateInputs('exp', data.exp);
+            document.getElementById('admin-skills').innerHTML = generateInputs('skills', data.skills);
+            document.getElementById('admin-services').innerHTML = generateInputs('services', data.services);
+        }
+
+        // Function to Sync Admin Inputs back to Data Object
+        function syncAdminData() {
+            data.showProjects = document.getElementById('show-projects').checked;
+            data.showWorks = document.getElementById('show-works').checked;
+            data.showInfo = document.getElementById('show-info').checked;
+            data.showServices = document.getElementById('show-services').checked;
+            data.showContact = document.getElementById('show-contact').checked;
+            
+            data.role = document.getElementById('edit-role').value;
+            data.heroImg = document.getElementById('edit-hero-img').value;
+            data.heroImgW = document.getElementById('edit-hero-w').value || 350;
+            data.heroImgH = document.getElementById('edit-hero-h').value || 450;
+            data.heroImgX = document.getElementById('edit-hero-x').value || 0;
+            data.heroImgY = document.getElementById('edit-hero-y').value || 0;
+
+            data.aboutDesc = document.getElementById('edit-about-desc').value;
+            data.aboutImg = document.getElementById('edit-about-img').value;
+            data.aboutImgW = document.getElementById('edit-about-w').value || 350;
+            data.aboutImgH = document.getElementById('edit-about-h').value || 450;
+            data.aboutImgX = document.getElementById('edit-about-x').value || 0;
+            data.aboutImgY = document.getElementById('edit-about-y').value || 0;
+
+            const updateArray = (type) => {
+                data[type].forEach((item, index) => {
+                    if (type === 'projects' || type === 'works') {
+                        item.title = document.getElementById(`${type}-title-${index}`).value;
+                        item.desc = document.getElementById(`${type}-desc-${index}`).value;
+                        item.img = document.getElementById(`${type}-img-${index}`).value;
+                    } else if (type === 'exp') {
+                        item.company = document.getElementById(`${type}-company-${index}`).value;
+                        item.role = document.getElementById(`${type}-role-${index}`).value;
+                        item.date = document.getElementById(`${type}-date-${index}`).value;
+                        item.desc = document.getElementById(`${type}-desc-${index}`).value;
+                    } else if (type === 'skills') {
+                        item.name = document.getElementById(`${type}-name-${index}`).value;
+                        item.img = document.getElementById(`${type}-img-${index}`).value;
+                    } else if (type === 'services') {
+                        item.title = document.getElementById(`${type}-title-${index}`).value;
+                        item.desc = document.getElementById(`${type}-desc-${index}`).value;
+                        item.img = document.getElementById(`${type}-img-${index}`).value;
+                    }
+                });
+            };
+            ['projects', 'works', 'exp', 'skills', 'services'].forEach(updateArray);
+        }
+
+        // Add Item to Array
+        window.addItem = function(type) {
+            syncAdminData();
+            if (type === 'projects' || type === 'works') data[type].push({ title: "New Item", desc: "Desc", img: "" });
+            else if (type === 'exp') data.exp.push({ company: "Company", role: "Role", date: "Date", desc: "Desc" });
+            else if (type === 'skills') data.skills.push({ name: "Skill", img: "" });
+            else if (type === 'services') data.services.push({ title: "Service", desc: "Desc", img: "" });
+            renderAdminLists();
+        };
+
+        // Remove Item from Array
+        window.removeItem = function(type, index) {
+            syncAdminData();
+            data[type].splice(index, 1);
+            renderAdminLists();
+        };
+
+        // Save Edits to Local Storage and Re-render
+        window.saveEdits = function() {
+            syncAdminData();
+            localStorage.setItem('manishFullPortfolioV6', JSON.stringify(data));
+            renderSite();
+            document.getElementById('edit-modal').style.display = 'none';
+        };
+
+        // 5-Click Logic to Open Admin Panel
+        let clickCount = 0; let clickTimer;
+        const editModal = document.getElementById('edit-modal');
+
+        document.getElementById('secret-footer').addEventListener('click', () => {
+            clickCount++;
+            clearTimeout(clickTimer);
+            clickTimer = setTimeout(() => { clickCount = 0; }, 1500);
+            if (clickCount === 5) {
+                // Populate Admin fields before showing
+                document.getElementById('show-projects').checked = data.showProjects;
+                document.getElementById('show-works').checked = data.showWorks;
+                document.getElementById('show-info').checked = data.showInfo;
+                document.getElementById('show-services').checked = data.showServices;
+                document.getElementById('show-contact').checked = data.showContact;
+                
+                document.getElementById('edit-role').value = data.role;
+                document.getElementById('edit-hero-img').value = data.heroImg;
+                document.getElementById('edit-hero-w').value = data.heroImgW;
+                document.getElementById('edit-hero-h').value = data.heroImgH;
+                document.getElementById('edit-hero-x').value = data.heroImgX;
+                document.getElementById('edit-hero-y').value = data.heroImgY;
+
+                document.getElementById('edit-about-desc').value = data.aboutDesc;
+                document.getElementById('edit-about-img').value = data.aboutImg;
+                document.getElementById('edit-about-w').value = data.aboutImgW;
+                document.getElementById('edit-about-h').value = data.aboutImgH;
+                document.getElementById('edit-about-x').value = data.aboutImgX;
+                document.getElementById('edit-about-y').value = data.aboutImgY;
+                
+                renderAdminLists();
+                editModal.style.display = 'block';
+                clickCount = 0;
+            }
+        });
+
+        // Close Admin Panel
+        document.getElementById('close-edit').addEventListener('click', () => { editModal.style.display = 'none'; });
+
+        // Mobile Menu Toggle Logic
+        const mobileMenu = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        mobileMenu.addEventListener('click', () => { navLinks.classList.toggle('active'); });
+        
+        // Initial Render on Page Load
+        renderSite();
+    </script>
+</body>
+</html>
